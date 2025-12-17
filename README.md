@@ -15,5 +15,4 @@ A leightweight Fabric Minecraft server connecting users via [Tailscale](https://
 
 - [Sodium](https://modrinth.com/mod/sodium)
 - [Lithium](https://modrinth.com/mod/lithium)
-- [Phosphor](https://modrinth.com/mod/phosphor)
 - [Chunky](https://modrinth.com/plugin/chunky)
