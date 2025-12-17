@@ -22,3 +22,4 @@ server.properties
 
 # Fabric cache
 .fabric/
+.DS_Store
