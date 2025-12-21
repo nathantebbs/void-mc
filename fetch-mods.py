@@ -2,22 +2,16 @@
 """
 Mod Fetcher Script
 
-Downloads Minecraft mods from a YAML configuration file to a specified directory.
+Downloads Minecraft mods from a JSON configuration file to a specified directory.
 Usage: ./fetch-mods.py <config-file> <output-dir>
 """
 
 import os
 import sys
+import json
 import urllib.request
 import urllib.parse
 from pathlib import Path
-
-try:
-    import yaml
-except ImportError:
-    print("Error: PyYAML not installed. Please install it:")
-    print("  pip install pyyaml")
-    sys.exit(1)
 
 
 def download_file(url: str, destination: Path, description: str = "file"):
@@ -54,7 +48,7 @@ def fetch_mods(config_file: Path, output_dir: Path):
         sys.exit(1)
 
     with open(config_file, 'r') as f:
-        config = yaml.safe_load(f)
+        config = json.load(f)
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -88,7 +82,7 @@ def main():
         print("Usage: fetch-mods.py <config-file> <output-dir>")
         print()
         print("Example:")
-        print("  ./fetch-mods.py server-mods.yaml mods/")
+        print("  ./fetch-mods.py server-mods.json mods/")
         sys.exit(1)
 
     config_file = Path(sys.argv[1])

@@ -29,3 +29,13 @@ server/server.properties
 
 # Python virtual environment
 venv/
+
+# Environment variables (contains secrets)
+.env
+
+# Generated configuration files
+client-mods.json
+server-mods.json
+server-settings.json
+
+CLAUDE.md
