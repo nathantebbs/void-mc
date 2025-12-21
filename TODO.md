@@ -13,6 +13,7 @@
 ### Documentation
 - [ ] Enhance README with connection instructions and server details
 - [ ] docs/ github pages
+  - [ ] custom theme or something else
 
 ### Other
 - [ ] Discord bot?
