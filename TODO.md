@@ -6,6 +6,9 @@
 - [ ] Automatically edit eula, and server.properties with secrets post server files being created
 - [ ] Officialize release
 - [ ] Datapack script integration
+  - [x] Datapacks downloaded server-side
+  - [ ] YAML config files
+  - [ ] New makefile target
 
 ### Documentation
 - [ ] Enhance README with connection instructions and server details
