@@ -49,6 +49,13 @@ make accept-eula
 make run-server
 ```
 
+> [!NOTE]
+> If `eula.txt` doesn't appear after the first time running `run-server`
+> then run `make run-server` an additional time before trying `make accept-eula`.
+> For some odd reason the first time running `run-server` generates some but not all
+> server files, I have no clue why this is the case, bu after the second `run-server`
+> `server.properties` & `eula.txt` should appear in `server/` directory. 
+
 **What happens on first run:**
 1. Server mods are downloaded automatically
 2. Server runs briefly to generate `eula.txt` and `server.properties`
