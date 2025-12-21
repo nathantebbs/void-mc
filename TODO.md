@@ -7,7 +7,7 @@
 - [ ] Officialize release
 - [ ] Datapack script integration
   - [x] Datapacks downloaded server-side
-  - [ ] YAML config files
+  - [x] YAML config files
   - [ ] New makefile target
 
 ### Documentation
