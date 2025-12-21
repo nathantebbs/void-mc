@@ -3,14 +3,17 @@
 ## Pending Tasks
 
 ### Server Setup
-- [ ] Customize server.properties (MOTD, whitelist, view distances)
-- [ ] Secure server.properties management server secret
-- [ ] Does the new makefile system work as expected?
+- [ ] Automatically edit eula, and server.properties with secrets post server files being created
 
 ### Documentation
 - [ ] Enhance README with connection instructions and server details
+- [ ] docs/ github pages
+
+### Other
+- [ ] Discord bot?
 
 ## Completed
+- [x] Does the new makefile system work as expected?
 - [x] server_setup.py? servermodlist.toml?
 - [x] Add server-compatible mods (Lithium, Phosphor, Chunky) to /mods
 - [x] Create .gitignore file for runtime files
