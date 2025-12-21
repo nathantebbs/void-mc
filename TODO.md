@@ -16,6 +16,11 @@
 
 ### Other
 - [ ] Discord bot?
+- [ ] Migrate to TOML -> JSON configuration pipeline
+  - [ ] root/config.toml sets basic project settings, seed, difficulty, ip etc (saved as secrets?)
+  - [ ] python script generates JSON which utility scripts use as input for fetching
+  - [ ] top level setup CLI which generates the basic config.toml which the user then can text edit based
+  on automatically generated comments explaining the file.
 
 ## Completed
 - [x] Does the new makefile system work as expected?
