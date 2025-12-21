@@ -38,7 +38,7 @@ client-mods:
 
 run-server: server-mods
 	@echo "Starting Minecraft server..."
-	@java -Xmx2G -jar $(SERVER_JAR) nogui
+	@cd server && java -Xmx2G -jar void-mc-launcher.jar nogui
 
 clean:
 	@echo "Cleaning up mods..."
