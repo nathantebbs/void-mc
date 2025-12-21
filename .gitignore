@@ -1,24 +1,27 @@
 # Runtime server files
-world/
-logs/
-libraries/
-versions/
-mods/
+server/world/
+server/logs/
+server/libraries/
+server/versions/
+server/mods/
+server/cache/
+server/crash-reports/
+server/config/
 
 # Server state files
-usercache.json
-banned-ips.json
-banned-players.json
-ops.json
-whitelist.json
-eula.txt
+server/usercache.json
+server/banned-ips.json
+server/banned-players.json
+server/ops.json
+server/whitelist.json
+server/eula.txt
 
 # Logs
-*.log
-fabricloader.log
+server/*.log
+server/fabricloader.log
 
 # Server properties (contains secrets)
-server.properties
+server/server.properties
 
 # Fabric cache
 .fabric/
