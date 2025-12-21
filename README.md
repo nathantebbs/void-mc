@@ -36,17 +36,31 @@ This reads `config.toml` and generates JSON files for:
 - `server-mods.json` - Server-side mod configuration
 - `server-settings.json` - Server properties configuration
 
-### 4. Download Mods and Run Server
+### 4. Run the Server (First Time)
 
 ```bash
-# Download server mods
-make server-mods
-
-# Download client mods (optional)
-make client-mods
-
-# Run the server
+# First run - this will generate server files and prompt for EULA acceptance
 make run-server
+
+# Accept the Minecraft EULA (required)
+make accept-eula
+
+# Run the server again - settings will be automatically injected
+make run-server
+```
+
+**What happens on first run:**
+1. Server mods are downloaded automatically
+2. Server runs briefly to generate `eula.txt` and `server.properties`
+3. You're prompted to accept the Minecraft EULA
+4. After accepting with `make accept-eula`, the next `make run-server` will:
+   - Verify EULA acceptance
+   - Automatically inject settings from `server-settings.json` into `server.properties`
+   - Start the server with your configured settings
+
+**Optional:** Download client mods separately:
+```bash
+make client-mods
 ```
 
 ## Configuration
@@ -56,7 +70,9 @@ After running `make setup`, you can manually edit `config.toml` to:
 - Adjust server settings
 - Customize server properties
 
-After making changes, run `make generate-config` to regenerate the JSON files.
+After making changes to `config.toml`:
+1. Run `make generate-config` to regenerate the JSON files
+2. Run `make inject-settings` to update `server.properties` (or just restart the server - settings are auto-injected on each run)
 
 ## Available Make Targets
 
@@ -65,7 +81,9 @@ After making changes, run `make generate-config` to regenerate the JSON files.
 - `make generate-config` - Generate JSON files from config.toml
 - `make server-mods` - Download server mods
 - `make client-mods` - Download client mods
-- `make run-server` - Start the Minecraft server
+- `make accept-eula` - Accept Minecraft EULA (required before first server run)
+- `make inject-settings` - Manually inject server-settings.json into server.properties
+- `make run-server` - Start the Minecraft server (auto-injects settings)
 - `make clean` - Remove downloaded mods
 - `make clean-all` - Remove all generated files and venv
 
