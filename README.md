@@ -17,3 +17,9 @@ A leightweight Fabric Minecraft server connecting users via [Tailscale](https://
 - [Lithium](https://modrinth.com/mod/lithium)
 - [Chunky](https://modrinth.com/plugin/chunky)
 - [Litematica](https://modrinth.com/mod/litematica)
+
+## Seed
+
+**6944174826991112**
+
+![img](./assets/seedshot.png)

@@ -23,3 +23,6 @@ server.properties
 # Fabric cache
 .fabric/
 .DS_Store
+
+# Python virtual environment
+venv/
