@@ -4,11 +4,35 @@ Server Settings Injection Script
 
 Reads server-settings.json and injects values into server/server.properties.
 This preserves any existing settings while updating configured values.
+Also reads SERVER_IP from .env and injects server-ip and server-port.
 """
 
 import json
 import sys
 from pathlib import Path
+
+
+def load_env_vars():
+    """Load environment variables from .env file."""
+    env_path = Path(".env")
+    env_vars = {}
+
+    if not env_path.exists():
+        return env_vars
+
+    with open(env_path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            # Skip comments and empty lines
+            if not line or line.startswith('#'):
+                continue
+
+            # Parse KEY=VALUE
+            if '=' in line:
+                key, value = line.split('=', 1)
+                env_vars[key.strip()] = value.strip()
+
+    return env_vars
 
 
 def load_server_settings():
@@ -85,6 +109,9 @@ def main():
     # Load settings from JSON
     settings = load_server_settings()
 
+    # Load environment variables from .env
+    env_vars = load_env_vars()
+
     # Load existing properties
     properties = parse_properties_file(properties_path)
 
@@ -125,6 +152,30 @@ def main():
                 properties[prop_key] = new_value
                 updated_count += 1
                 print(f"✓ Updated {prop_key}: {old_value} → {new_value}")
+
+    # Inject SERVER_IP from .env if available
+    if 'SERVER_IP' in env_vars:
+        server_ip_value = env_vars['SERVER_IP']
+        # Parse IP and port (format: "0.0.0.0:25565")
+        if ':' in server_ip_value:
+            server_ip, server_port = server_ip_value.rsplit(':', 1)
+        else:
+            server_ip = server_ip_value
+            server_port = '25565'  # Default Minecraft port
+
+        # Update server-ip
+        old_ip = properties.get('server-ip')
+        if old_ip != server_ip:
+            properties['server-ip'] = server_ip
+            updated_count += 1
+            print(f"✓ Updated server-ip: {old_ip} → {server_ip}")
+
+        # Update server-port
+        old_port = properties.get('server-port')
+        if old_port != server_port:
+            properties['server-port'] = server_port
+            updated_count += 1
+            print(f"✓ Updated server-port: {old_port} → {server_port}")
 
     # Write updated properties
     if updated_count > 0:
