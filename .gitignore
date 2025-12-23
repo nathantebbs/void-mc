@@ -30,6 +30,10 @@ server/server.properties
 # Python virtual environment
 venv/
 
+# Python bytecode
+__pycache__/
+*.pyc
+
 # Environment variables (contains secrets)
 .env
 
