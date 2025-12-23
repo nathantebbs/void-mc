@@ -1,0 +1,4 @@
+discord.py >=2.6.4
+mcrcon >= 0.7.0
+mcstatus >= 12.0.6
+python-dotenv >= 1.2.1
