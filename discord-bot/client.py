@@ -1,7 +1,8 @@
 import discord
 from discord import app_commands
 from utils.status_monitor import ServerStatusMonitor
-from config import STATUS_CHANNEL_ID
+from utils.player_events_monitor import PlayerEventsMonitor
+from config import NOTIFICATIONS_CHANNEL_ID, SERVER_LOG_PATH
 
 class Void(discord.Client):
     """
@@ -16,7 +17,8 @@ class Void(discord.Client):
     def __init__(self):
         super().__init__(intents=discord.Intents.default())
         self.tree = app_commands.CommandTree(self)
-        self.status_monitor = ServerStatusMonitor(self, STATUS_CHANNEL_ID)
+        self.status_monitor = ServerStatusMonitor(self, NOTIFICATIONS_CHANNEL_ID)
+        self.player_events_monitor = PlayerEventsMonitor(self, NOTIFICATIONS_CHANNEL_ID, SERVER_LOG_PATH)
 
     # Setup code after the client logs in but before it connects to the Discord
     # gateway and starts dispatching events
@@ -31,4 +33,6 @@ class Void(discord.Client):
         print("Bot logged in and setup hook is running!")
         self.status_monitor.start()
         print("Server status monitoring started")
+        self.player_events_monitor.start()
+        print("Player events monitoring started")
 
