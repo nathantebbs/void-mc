@@ -1,5 +1,7 @@
 import discord
 from discord import app_commands
+from utils.status_monitor import ServerStatusMonitor
+from config import STATUS_CHANNEL_ID
 
 class Void(discord.Client):
     """
@@ -14,6 +16,7 @@ class Void(discord.Client):
     def __init__(self):
         super().__init__(intents=discord.Intents.default())
         self.tree = app_commands.CommandTree(self)
+        self.status_monitor = ServerStatusMonitor(self, STATUS_CHANNEL_ID)
 
     # Setup code after the client logs in but before it connects to the Discord
     # gateway and starts dispatching events
@@ -26,4 +29,6 @@ class Void(discord.Client):
             print(f"Failed to sync commands: {e}")
 
         print("Bot logged in and setup hook is running!")
+        self.status_monitor.start()
+        print("Server status monitoring started")
 

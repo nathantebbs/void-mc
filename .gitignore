@@ -42,4 +42,6 @@ client-mods.json
 server-mods.json
 server-settings.json
 
+.agent-shell
+
 CLAUDE.md
