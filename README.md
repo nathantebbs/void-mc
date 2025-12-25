@@ -1,6 +1,7 @@
 # void-mc
 
 A leightweight Fabric Minecraft server connecting users via [Tailscale](https://tailscale.com/)
+Installation Link: [void-mc](https://discord.com/oauth2/authorize?client_id=1452823973619564554&permissions=2147494912&integration_type=0&scope=bot+applications.commands)
 
 ## Quick Start
 
